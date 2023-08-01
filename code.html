@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Faisal Hossain</title>
+    <title>Hundo: A Coding Project by Faisal Hossain</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand" href="#">Hundo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,17 +52,60 @@
     <main class="flex-shrink-0">
 
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APPNAME</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Hundo</h2>
             <div class="row row-cols-1 row-cols-lg-2 ">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class=language-javascript>
 
-                            //Call function hellow world
+                            function getValue(){
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                                let numbers = [];
+                            
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+                            
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)){
+                                    numbers = generateNumbers(startValue, endValue);
+                                    displayNumbers(numbers);
+                            
+                                } else {
+                                    alert("You must enter an integer");
+                                }
+                            
+                            }
+                            
+                            function generateNumbers(startValue, endValue){
+                            
+                                let numbers = [];
+                            
+                                for (let index = startValue; index <= endValue; index++) {
+                            
+                                    numbers.push(index);
+                                }
+                            
+                                return numbers
+                            }
+                            
+                            
+                            function displayNumbers(numbers) {
+                                let templateRow = "";
+                                for (let index = 0; index < numbers.length; index++) {
+                                  let number = numbers[index]; 
 
-                            function HelloWorld(){
-                                alert("hello world");
-                            }   
+                                    // Due to html standards, the boolean logic below will not render correctly,
+                                    // Please see github for full project
+                            
+                                    if (number % 2 === 0) {
+                                        templateRow += `<tr><td><strong>${number}</strong></td></tr>`;
+                                    } else {
+                                        templateRow += `<tr><td>${number}</td></tr>`;
+                                    }
+                            
+                                }
+                                document.getElementById("results").innerHTML = templateRow;
+                              }
                             
                         </code>
                     </pre>
